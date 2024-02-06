@@ -1,0 +1,1 @@
+1. timeCounter and scanCounter not being printed out properly on the screen (could be due to concatenation error, not very sure)

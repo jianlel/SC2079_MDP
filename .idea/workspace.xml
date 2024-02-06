@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a99a6b3-dfce-47f2-af67-1b0c08d350d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Algo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithm/Astar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithm/Commands.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithm/Dubins.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithm/Environment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithm/TSP.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Arena.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Obstacle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/RectRobot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Rectangle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Robot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/STMCommand.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/VirtualRect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Helper/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Helper/helperFunctions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Helper/obstacleGenerator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Helper/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Simulator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/currentIssues" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Simulator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

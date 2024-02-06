@@ -110,6 +110,7 @@ class Simulator:
             messagebox.showinfo('ALL Images Found', 'OK')
             pygame.display.set_caption("Pathing Done")
             self.completed = True
+
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_p:
