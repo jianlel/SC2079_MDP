@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="15dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="5dp">
+
+            <TextView
+                android:id="@+id/exploreTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:background="@drawable/statusbar"
+                android:gravity="center"
+                android:text="Image Recognition"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/exploreTimeTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_white"
+                android:gravity="center"
+                android:text="00:00"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="26sp" />
+
+            <ToggleButton
+                android:id="@+id/exploreToggleBtn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Exploration"
+                android:textOff="START"
+                android:background="@drawable/border_black_state"
+                android:textOn="STOP" />
+
+
+            <ImageButton
+                android:id="@+id/exploreResetImageBtn2"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/ic_refresh"
+                android:background="@color/transparent"/>
+
+            <Button
+                android:id="@+id/sendObsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border_black_state"
+                android:padding="5dp"
+                android:text="Send Obstacles" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="5dp">
+
+            <TextView
+                android:id="@+id/fastestTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/statusbar"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Fastest Path"
+                android:textColor="@color/colorBlack"/>
+
+            <TextView
+                android:id="@+id/fastestTimeTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_white"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:text="00:00"
+                android:textSize="26sp" />
+
+            <ToggleButton
+                android:id="@+id/fastestToggleBtn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="FASTEST"
+                android:textOff="START"
+                android:background="@drawable/border_black_state"
+                android:textOn="STOP" />
+
+            <ImageButton
+                android:id="@+id/fastestResetImageBtn2"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/ic_refresh"
+                android:background="@color/transparent"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
