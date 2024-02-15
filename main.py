@@ -9,8 +9,14 @@ from Simulator import Simulator
 
 def main():
     obs1 = obstacleGenerator.getTestObstacles()
-    sim = Simulator(staticEnvironment((200, 200), obs1), obs1, False)
+    obs2 = obstacleGenerator.getTestObstacles1()
+    obs3 = obstacleGenerator.getTestObstacles2()
+    obs4 = obstacleGenerator.getTestObstacles3()
+    obs5 = obstacleGenerator.getTestObstacles4()
+
+    sim = Simulator(staticEnvironment((200, 200), obs3), obs3, False)
     sim.initialize()
     sim.run()
+
 
 main()

@@ -154,6 +154,7 @@ class Simulator:
             self.events()
             self.render()
             self.clock.tick(30)
+            print(self.timeCounter)
 
 
 """
