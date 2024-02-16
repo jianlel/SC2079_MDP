@@ -1,6 +1,7 @@
 
 from Algorithm.Environment import staticEnvironment
 import itertools
+import Helper.settings as settings
 from collections import deque
 from Algorithm.Astar import Astar
 from Helper.constants import DIRECTION
@@ -40,6 +41,9 @@ class NearestNeighbour:
         optimalPath = min(costList, key=lambda tup: tup[2])
         print("Stm path", optimalPath[0])
         print("coords", optimalPath[1])
+        with open(settings.FILE_PATH, "w") as file:
+            file.write(str(optimalPath[0]))
+            file.write("\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
         self.commandList = list(optimalPath[0]), coords

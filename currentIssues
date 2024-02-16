@@ -1,1 +1,11 @@
 1. timeCounter and scanCounter not being printed out properly on the screen (could be due to concatenation error, not very sure)
+
+How to properly read the robot:
+Command s = Car went STRAIGHT FORWARD
+Command b = Car went STRAIGHT BACKWARD
+Command d = Car went RIGHT
+Command u = Car went LEFT
+Command w = Car went REVERSE RIGHT 
+Command v = Car went REVERSE LEFT
+# Command OR = Car went RIGHT on the spot 
+# Command OL = Car went LEFT on the spot

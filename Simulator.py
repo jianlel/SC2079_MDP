@@ -16,7 +16,6 @@ from Algorithm.TSP import NearestNeighbour
 
 from Helper import settings
 from Helper.constants import DIRECTION
-from Helper.obstacleGenerator import getTestObstacles
 
 class Simulator:
 
@@ -73,6 +72,9 @@ class Simulator:
             self.optimalCoords = TSP.getOptimalWithCoords()
             self.commandList = TSP.convert_to_simulator_commands()
             print(self.optimalCoords)
+            with open(settings.FILE_PATH, "a") as file:
+                file.write("\n")
+                file.write(str(self.optimalCoords) + "\n")
 
         pygame.display.set_caption("Starting simulator...")
         self.scanCheck = [x for x in self.env.getTargetLocation()]
@@ -154,7 +156,7 @@ class Simulator:
             self.events()
             self.render()
             self.clock.tick(30)
-            print(self.timeCounter)
+            # print(self.timeCounter)
 
 
 """

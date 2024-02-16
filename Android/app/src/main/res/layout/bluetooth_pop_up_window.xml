@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="22dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:foreground="@drawable/outline_arrow_back_24"
+                android:foregroundTint="@color/colorBlack"
+                android:padding="12dp" />
+
+            <TextView
+                android:id="@+id/connStatusTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Disconnected"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/bluetoothSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:splitTrack="false"
+                android:text="OFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bluetoothTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="BLUETOOTH"
+                    android:textColor="@color/betterBlue"
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/searchBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_buttonstate"
+                    android:foregroundGravity="center"
+                    android:onClick="toggleButtonScan"
+                    android:paddingStart="12dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="12dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/bluetooth_search_icon"
+                    android:text="SEARCH"
+                    android:textColor="@color/colorWhite" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/otherDevicesTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+
+                android:text="Devices Within Range"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"/>
+
+            <ListView
+                android:id="@+id/otherDevicesListView"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/listview_border"
+                android:gravity="bottom"
+                android:scrollbars="vertical"
+                android:text=""
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/pairedDevicesTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Paired Devices"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"/>
+
+            <ListView
+                android:id="@+id/pairedDevicesListView"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/listview_border"
+                android:listSelector="#bdb9b9"
+                android:scrollbars="vertical"
+                android:text=""
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/connectBtn"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/buttonstate"
+                android:onClick="toggleButtonScan"
+                android:text="CONNECT"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
