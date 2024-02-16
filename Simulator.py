@@ -155,7 +155,8 @@ class Simulator:
         while self.running:
             self.events()
             self.render()
-            self.clock.tick(30)
+            self.clock.tick(settings.FRAMES)
+            print(self.scanCounter)
             # print(self.timeCounter)
 
 

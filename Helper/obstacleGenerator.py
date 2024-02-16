@@ -1,6 +1,12 @@
 import Helper.settings as settings
 from Entities.Obstacle import Obstacle
 
+"""
+    Take note that range for obstacles is:
+    x = [0, 190]
+    y = [0, 190]
+    Obstacle (x, y) MUST also be divisible by 10
+"""
 
 def getTestObstacles():
     test = [Obstacle((50, 90), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1'),
@@ -56,4 +62,11 @@ def getTestObstacles4():
         Obstacle((180, 190), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '4'),
         Obstacle((80, 60), "N", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '5'),
     ]
+    return test
+
+def getTestObstacles5(): 
+    test = [
+        Obstacle((20, 90), "E", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1')
+    ]
+
     return test
