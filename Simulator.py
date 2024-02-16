@@ -54,6 +54,7 @@ class Simulator:
         self.screen.fill(settings.BLACK)
         pygame.display.set_caption("MDP Algo")
         self.font = pygame.font.Font('Assets/font.ttf', 32)
+        self.number_font = pygame.font.SysFont(None, 32)
         self.text = self.font.render("MDP Algo", True, settings.WHITE, settings.BLACK)
         self.text.get_rect().center = (600, 400)
         self.screen.blit(self.text, self.text.get_rect())
@@ -98,8 +99,9 @@ class Simulator:
                                          settings.GREEN, settings.BLUE)
             direction.get_rect().center = (600, 200)
             self.screen.blit(direction, (0, 30))
-            self.textTimer = self.font.render("Time ( secs): " + str(self.timeCounter), True, settings.GREEN,
-                                              settings.BLUE)
+            self.textTimer = self.number_font.render("Time ({}secs): ".format(str(self.timeCounter)),True,settings.GREEN, settings.BLUE)
+            #self.textTimer = self.font.render("Time ( secs): " + str(self.timeCounter), True, settings.GREEN,
+            #                                  settings.BLUE)
             self.textTimer.get_rect().center = (600, 600)
             self.screen.blit(self.textTimer, (0, 60))
         self.scanText = self.font.render("Image Scanned: " + str(self.scanCounter), True, settings.GREEN, settings.BLUE)
@@ -155,8 +157,7 @@ class Simulator:
         while self.running:
             self.events()
             self.render()
-            self.clock.tick(settings.FRAMES)
-            print(self.scanCounter)
+            self.clock.tick(30)
             # print(self.timeCounter)
 
 
