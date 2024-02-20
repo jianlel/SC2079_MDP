@@ -2,6 +2,7 @@ from tkinter import messagebox
 
 import pygame
 import sys
+import numpy as np
 
 from python_tsp.exact import solve_tsp_dynamic_programming
 
@@ -42,6 +43,8 @@ class Simulator:
         self.scanCounter = 0
         self.scanText = None
         self.scanCheck = None
+        self.distanceTravelled = 0 
+        self.distanceText = None
         self.completed = False
 
 
@@ -99,15 +102,61 @@ class Simulator:
                                          settings.GREEN, settings.BLUE)
             direction.get_rect().center = (600, 200)
             self.screen.blit(direction, (0, 30))
-            self.textTimer = self.number_font.render("Time ({}secs): ".format(str(self.timeCounter)),True,settings.GREEN, settings.BLUE)
+            self.textTimer = self.font.render("Time (secs): " + str(self.timeCounter), True, 
+                                                     settings.GREEN, settings.BLUE)
             #self.textTimer = self.font.render("Time ( secs): " + str(self.timeCounter), True, settings.GREEN,
             #                                  settings.BLUE)
             self.textTimer.get_rect().center = (600, 600)
             self.screen.blit(self.textTimer, (0, 60))
+            rounded_dist = round(self.distanceTravelled, 2)
+            self.distanceText = self.font.render("Distance: ({}cm)".format(str(rounded_dist)), True, 
+                                                 settings.GREEN,
+                                                 settings.BLUE)
+            self.distanceText.get_rect().center = (600, 0)
+            self.screen.blit(self.distanceText, (500, 300))
+            
         self.scanText = self.font.render("Image Scanned: " + str(self.scanCounter), True, settings.GREEN, settings.BLUE)
         self.scanText.get_rect().center = (600, 600)
         self.screen.blit(self.scanText, (500, 100))
+    
+    def add_distance(self, action):
+        if action == 's':
+            self.distanceTravelled += 10
+        
+        elif action == 'b':
+            self.distanceTravelled += 10
 
+        elif action == 'd':
+            self.distanceTravelled += 10 * np.pi
+
+        elif action == 'u':
+            self.distanceTravelled += 10 * np.pi
+
+        elif action == 'w':
+            self.distanceTravelled += 10 * np.pi
+
+        elif action == 'v':
+            self.distanceTravelled += 10 * np.pi
+
+    def minus_distance(self, action):
+        if action == 's':
+            self.distanceTravelled -= 10
+        
+        elif action == 'b':
+            self.distanceTravelled -= 10
+
+        elif action == 'd':
+            self.distanceTravelled -= 10 * np.pi
+
+        elif action == 'u':
+            self.distanceTravelled -= 10 * np.pi
+
+        elif action == 'w':
+            self.distanceTravelled -= 10 * np.pi
+
+        elif action == 'v':
+            self.distanceTravelled -= 10 * np.pi
+    
     def events(self):
         # pop up window after the simulator is done
         if self.scanCounter == 5 and not self.completed:
@@ -122,9 +171,11 @@ class Simulator:
                 elif event.key == pygame.K_LEFT and self.pause and self.commandCounter > 0:
                     self.commandCounter -= 1
                     self.timeCounter -= 1
+                    self.minus_distance(self.commandList[self.timeCounter])
                 elif event.key == pygame.K_RIGHT and self.pause and self.commandCounter <= len(self.commandList) - 1:
                     self.commandCounter += 1
                     self.timeCounter += 1
+                    self.add_distance(self.commandList[self.timeCounter])
             if event.type == self.moveCar:
                 if self.commandCounter <= len(self.commandList) - 1:
                     if self.robot.command is None:
@@ -139,6 +190,7 @@ class Simulator:
                     self.robot.command.yoloTick()
                 # check if already scan image:
                 pos = (self.robot.pos[0], self.robot.pos[1], self.robot.orientation)
+                print(self.distanceTravelled)
                 if pos in self.scanCheck:
                     self.scanCounter += 1
                     self.scanCheck.remove(pos)
@@ -146,6 +198,8 @@ class Simulator:
                 # self.arena.drawStuff(self.env.getTargetLocation(), self.screen, settings.GREEN)
             if event.type == self.timer and not self.pause:
                 self.timeCounter += 1
+                if(self.timeCounter <= len(self.commandList)):
+                    self.add_distance(self.commandList[self.timeCounter-1])
 
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -154,10 +208,11 @@ class Simulator:
         pygame.display.flip()
 
     def run(self):
+        print(self.scanCheck)
         while self.running:
             self.events()
             self.render()
-            self.clock.tick(30)
+            self.clock.tick(settings.FRAMES)
             # print(self.timeCounter)
 
 

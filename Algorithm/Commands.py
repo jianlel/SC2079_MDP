@@ -180,3 +180,5 @@ class Command:
                 (self.pos[0] + settings.SPEED_FACTOR, self.pos[1] - settings.SPEED_FACTOR, self.pos[2], 'S'))
             self.commands.append(
                 (self.pos[0] - settings.SPEED_FACTOR, self.pos[1] + settings.SPEED_FACTOR, self.pos[2], 'SV'))
+
+ 

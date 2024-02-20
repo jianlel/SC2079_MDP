@@ -1,4 +1,7 @@
 1. timeCounter and scanCounter not being printed out properly on the screen (could be due to concatenation error, not very sure)
+2. check whether scanCheck is being counted properly or not (env)
+3. scanning not working properly because direction not updated in time (they take previous direction after first time check)
+    --> can possibly take from font render portion for direction 
 
 How to properly read the robot:
 Command s = Car went STRAIGHT FORWARD
