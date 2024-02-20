@@ -1,6 +1,7 @@
 
 from Algorithm.Environment import staticEnvironment
 import itertools
+import numpy as np
 import Helper.settings as settings
 from collections import deque
 from Algorithm.Astar import Astar
@@ -41,8 +42,12 @@ class NearestNeighbour:
         optimalPath = min(costList, key=lambda tup: tup[2])
         print("Stm path", optimalPath[0])
         print("coords", optimalPath[1])
+        dist = self.totalDistance(optimalPath[0])
         with open(settings.FILE_PATH, "w") as file:
             file.write(str(optimalPath[0]))
+            file.write("\n")
+            file.write("\n")
+            file.write("Total distance travelled is: " + str(dist))
             file.write("\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
@@ -53,7 +58,22 @@ class NearestNeighbour:
     def euclideanDistance(self, start, end):
 
         return ((end[0]-start[0])**2 + (end[1]-start[1])**2)**0.5
+    
+    def totalDistance(self, optimalPath):
+        distances = {
+            's': 10,
+            'b': 10,
+            'd': 10 * np.pi,
+            'u': 10 * np.pi,
+            'w': 10 * np.pi,
+            'v': 10 * np.pi
+        }
 
+        total_distance = 0
+        for count in optimalPath:
+            for char in count[1].split(','):
+                total_distance += distances[char]
+        return total_distance
 
     def findPath(self, targetLocations: list):
         """
