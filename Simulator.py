@@ -115,9 +115,11 @@ class Simulator:
             self.distanceText.get_rect().center = (600, 0)
             self.screen.blit(self.distanceText, (500, 300))
             
+        """
         self.scanText = self.font.render("Image Scanned: " + str(self.scanCounter), True, settings.GREEN, settings.BLUE)
         self.scanText.get_rect().center = (600, 600)
         self.screen.blit(self.scanText, (500, 100))
+        """
     
     def add_distance(self, action):
         if action == 's':
@@ -159,8 +161,15 @@ class Simulator:
     
     def events(self):
         # pop up window after the simulator is done
+        """
         if self.scanCounter == 5 and not self.completed:
             messagebox.showinfo('ALL Images Found', 'OK')
+            pygame.display.set_caption("Pathing Done")
+            self.completed = True
+        """
+
+        if self.timeCounter > len(self.commandList) and not self.completed:
+            messagebox.showinfo('MDP Algo', 'Path completed')
             pygame.display.set_caption("Pathing Done")
             self.completed = True
 
@@ -190,7 +199,7 @@ class Simulator:
                     self.robot.command.yoloTick()
                 # check if already scan image:
                 pos = (self.robot.pos[0], self.robot.pos[1], self.robot.orientation)
-                print(self.distanceTravelled)
+                print(pos)
                 if pos in self.scanCheck:
                     self.scanCounter += 1
                     self.scanCheck.remove(pos)
