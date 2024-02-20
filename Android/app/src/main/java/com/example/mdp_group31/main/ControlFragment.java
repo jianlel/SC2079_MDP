@@ -158,6 +158,7 @@ public class ControlFragment extends Fragment {
                 this.direction = this.gridMap.getRobotDirection();
                 // handles translation based on robot direction
                 int[] newCoord = new int[2];
+                Log.i("MyActivity", "FW--");
                 switch (this.direction) {
                     case "up":
                         newCoord =new int[]{this.curCoord[0], this.curCoord[1]+1};
