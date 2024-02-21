@@ -17,7 +17,7 @@ def main():
     obs5 = obstacleGenerator.getTestObstacles4()
     obsTest = obstacleGenerator.getTestObstacles5()
 
-    sim = Simulator(staticEnvironment((200, 200), obs1), obs1, False)   
+    sim = Simulator(staticEnvironment((200, 200), obs4), obs4, False)   
     sim.initialize()
     sim.run()
 

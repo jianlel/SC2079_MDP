@@ -133,7 +133,7 @@ class staticEnvironment:
             elif ob.imageOrientation == "N":
                 for x in possible_pos["N"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] + 20, DIRECTION.BOTTOM
+                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] - 20, DIRECTION.BOTTOM
                         break
             elif ob.imageOrientation == "W":
                 for x in possible_pos["W"]:
