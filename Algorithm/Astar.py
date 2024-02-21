@@ -3,6 +3,7 @@ import Helper.constants as constants
 from Algorithm.Commands import Command
 from Algorithm.Environment import staticEnvironment
 from Algorithm.Dubins import dist
+from python_tsp.exact import solve_tsp_dynamic_programming
 from queue import PriorityQueue
 
 class Astar:

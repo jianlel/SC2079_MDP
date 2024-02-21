@@ -58,7 +58,7 @@ class Arena:
     def drawStuff(self, stuff: list[tuple], SCREEN, COLOUR):
         for s in stuff:
             print(s)
-            pygame.draw.circle(SCREEN, COLOUR, self.posConverter(s), 20)
+            pygame.draw.circle(SCREEN, COLOUR, self.posConverterStuff(s), 10)
 
     def updateGrid(self, robot, SCREEN):
         SCREEN.fill((0,0,0))
@@ -83,7 +83,12 @@ class Arena:
         return (pos[0] // settings.GRID_SCALE_FACTOR) * settings.BLOCK_SIZE + settings.GRID_OFFSET, \
                             (settings.GRID_Y_OFFSET - (pos[1] // settings.GRID_SCALE_FACTOR) * settings.BLOCK_SIZE) + \
                             settings.GRID_OFFSET
-
+    
+    @staticmethod
+    def posConverterStuff(pos):
+        return (pos[0] // settings.GRID_SCALE_FACTOR) * settings.BLOCK_SIZE + settings.GRID_OFFSET + settings.STUFF_X_OFFSET, \
+                            (settings.GRID_Y_OFFSET - (pos[1] // settings.GRID_SCALE_FACTOR) * settings.BLOCK_SIZE) + \
+                            settings.GRID_OFFSET - settings.STUFF_Y_OFFSET
 
     @staticmethod
     def drawPath(path: list):

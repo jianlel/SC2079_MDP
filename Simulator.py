@@ -102,7 +102,7 @@ class Simulator:
                                          settings.GREEN, settings.BLUE)
             direction.get_rect().center = (600, 200)
             self.screen.blit(direction, (0, 30))
-            self.textTimer = self.font.render("Time (secs): " + str(self.timeCounter), True, 
+            self.textTimer = self.font.render("Time (units): " + str(self.timeCounter), True, 
                                                      settings.GREEN, settings.BLUE)
             #self.textTimer = self.font.render("Time ( secs): " + str(self.timeCounter), True, settings.GREEN,
             #                                  settings.BLUE)
@@ -158,7 +158,12 @@ class Simulator:
 
         elif action == 'v':
             self.distanceTravelled -= 10 * np.pi
-    
+
+    """
+    def save_image(self, pathTaken):
+        path_surface = pygame.Surface((settings.WINDOW_WIDTH, settings.WINDOW_HEIGHT))
+    """
+        
     def events(self):
         # pop up window after the simulator is done
         """
@@ -168,10 +173,12 @@ class Simulator:
             self.completed = True
         """
 
+        # pop up window once path is completed and timeCounter is more than length of commandList
         if self.timeCounter > len(self.commandList) and not self.completed:
             messagebox.showinfo('MDP Algo', 'Path completed')
             pygame.display.set_caption("Pathing Done")
             self.completed = True
+            pygame.image.save(self.screen, "test.png")
 
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:
@@ -204,7 +211,7 @@ class Simulator:
                     self.scanCounter += 1
                     self.scanCheck.remove(pos)
                 self.arena.updateGrid(self.robot, self.screen)
-                # self.arena.drawStuff(self.env.getTargetLocation(), self.screen, settings.GREEN)
+                self.arena.drawStuff(self.env.getTargetLocation(), self.screen, settings.PURPLE)
             if event.type == self.timer and not self.pause:
                 self.timeCounter += 1
                 if(self.timeCounter <= len(self.commandList)):
@@ -217,11 +224,12 @@ class Simulator:
         pygame.display.flip()
 
     def run(self):
+        print("{}{}")
         print(self.scanCheck)
         while self.running:
             self.events()
             self.render()
             self.clock.tick(settings.FRAMES)
-            # print(self.timeCounter)
+
 
 

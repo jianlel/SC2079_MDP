@@ -2,7 +2,6 @@ import pygame
 import numpy as np
 import shapely as sp
 
-from scipy.spatial import KDTree
 from Entities.Rectangle import Rectangle
 from Entities.Obstacle import Obstacle
 from Entities.RectRobot import RectRobot
@@ -16,10 +15,8 @@ class staticEnvironment:
     def __init__(self, dimensions, obstacles: list[Obstacle]):
         self.dimensions = dimensions
         self.obstacles = obstacles
-        # for future use
-        self.kdtree = KDTree([obs.pos for obs in self.obstacles])
         self.obID = []
-        self.targetLocations = self.generateTargeLocations()
+        self.targetLocations = self.generateTargetLocations()
 
     # Function to check if robot is can occupy this location
     # Takes in (x, y) coordinates and time
@@ -114,7 +111,7 @@ class staticEnvironment:
         """
         return self.targetLocations
 
-    def generateTargeLocations(self):
+    def generateTargetLocations(self):
         """
         generate the required locations
         :return:
@@ -131,12 +128,12 @@ class staticEnvironment:
             if ob.imageOrientation == "E":
                 for x in possible_pos["E"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1], DIRECTION.LEFT
+                        valid_pos = ob.pos[0] + x[0] - 20, ob.pos[1] + x[1], DIRECTION.LEFT
                         break
             elif ob.imageOrientation == "N":
                 for x in possible_pos["N"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1], DIRECTION.BOTTOM
+                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] + 20, DIRECTION.BOTTOM
                         break
             elif ob.imageOrientation == "W":
                 for x in possible_pos["W"]:
