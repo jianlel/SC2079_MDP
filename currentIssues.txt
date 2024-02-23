@@ -1,9 +1,8 @@
 1. scanning not working properly because direction not updated in time (they take previous direction after first time check)
     --> can possibly take from font render portion for direction 
-2. scanCheck taking the wrong corner of the car for obstacles 
-    --> will need to create different scanCheck locations depending on where the obstacle is facing
-    --> change DIRECTION.NORTH such that target location moves down 2 BLOCKS
-    --> change DIRECTION.EAST such that target location moves left 2 BLOCKS
+2. Draw out the start zone (under Arena.py)
+3. Add an obstacle generation function that can provide obstacle dynamically (maybe through txt file, or through user input?)
+
 
 How to properly read the robot:
 Command s = Car went STRAIGHT FORWARD

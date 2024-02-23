@@ -10,18 +10,22 @@ from Simulator import Simulator
 
 
 def main():
-    obs1 = obstacleGenerator.getTestObstacles()
-    obs2 = obstacleGenerator.getTestObstacles1()
-    obs3 = obstacleGenerator.getTestObstacles2()
-    obs4 = obstacleGenerator.getTestObstacles3()
-    obs5 = obstacleGenerator.getTestObstacles4()
-    obsTest = obstacleGenerator.getTestObstacles5()
+    obs = obstacleGenerator.getTestObstacles()
+    obs1 = obstacleGenerator.getTestObstacles1()
+    obs2 = obstacleGenerator.getTestObstacles2()
+    obs3 = obstacleGenerator.getTestObstacles3()
+    obs4 = obstacleGenerator.getTestObstacles4()
+    obs5 = obstacleGenerator.getTestObstacles5()
+    obsTest = obstacleGenerator.getTestObstaclesTest()
+    #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
+    inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
 
-    sim = Simulator(staticEnvironment((200, 200), obs4), obs4, False)   
+    sim = Simulator(staticEnvironment((200, 200), inputTxtObs), inputTxtObs, False)   
     sim.initialize()
     sim.run()
 
-main()
+if __name__ == '__main__':
+    main()
 
 
 

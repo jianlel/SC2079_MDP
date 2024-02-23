@@ -23,7 +23,7 @@ class Command:
         self.moveRight()
         self.faceLeftReverse() # reverse right
         self.faceRightReverse() # reverse left
-        #self.turnOntheSpot()
+        self.turnOnTheSpot()
         return self.commands
 
     def moveStraight(self):

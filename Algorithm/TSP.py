@@ -43,7 +43,7 @@ class NearestNeighbour:
         print("Stm path", optimalPath[0])
         print("coords", optimalPath[1])
         dist = self.totalDistance(optimalPath[0])
-        with open(settings.FILE_PATH, "w") as file:
+        with open(settings.OUTPUT_FILE_PATH, "w") as file:
             file.write(str(optimalPath[0]))
             file.write("\n")
             file.write("\n")

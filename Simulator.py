@@ -76,7 +76,7 @@ class Simulator:
             self.optimalCoords = TSP.getOptimalWithCoords()
             self.commandList = TSP.convert_to_simulator_commands()
             print(self.optimalCoords)
-            with open(settings.FILE_PATH, "a") as file:
+            with open(settings.OUTPUT_FILE_PATH, "a") as file:
                 file.write("\n")
                 file.write(str(self.optimalCoords) + "\n")
 
@@ -224,7 +224,6 @@ class Simulator:
         pygame.display.flip()
 
     def run(self):
-        print("{}{}")
         print(self.scanCheck)
         while self.running:
             self.events()

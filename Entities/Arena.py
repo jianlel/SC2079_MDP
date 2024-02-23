@@ -16,18 +16,24 @@ class Arena:
 
 
     def drawGrid(self, SCREEN):
+        # Draw the grid
         for x in range(0 + settings.GRID_OFFSET,self.width, self.blockSize):
             for y in range(0 + settings.GRID_OFFSET, self.height, self.blockSize):
                 grid = pygame.Rect(x,y, self.blockSize, self.blockSize)
                 pygame.draw.rect(SCREEN, settings.WHITE, grid, 1)
+        #Draw the obstacles
         for obstacle in self.obstacles:
             ob = pygame.Rect(obstacle.gridPosition, obstacle.dimension)
             ob.bottomleft = obstacle.gridPosition
             self.obList.append(ob)
             pygame.draw.rect(SCREEN, settings.GREEN, ob)
 
+            #Draw the borders surrounding obstacles
             self.drawBorder(obstacle, SCREEN, settings.RED, ob)
             self.drawInvisibleObstacle(obstacle,SCREEN, (0, 100, 255))
+        #Draw the start zone
+        start = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET + 20, self.blockSize * 4, self.blockSize * 4)
+        pygame.draw.rect(SCREEN, settings.YELLOW, start)
 
 
     def drawBorder(self, obstacle,  SCREEN, COLOUR, ob):
@@ -39,6 +45,7 @@ class Arena:
             pygame.draw.line(SCREEN, COLOUR, ob.bottomleft, ob.bottomright, 2)
         elif obstacle.imageOrientation == "W":
             pygame.draw.line(SCREEN, COLOUR, ob.topleft, ob.bottomleft, 2)
+
 
 
     def drawInvisibleObstacle(self, obstacle: Obstacle, SCREEN, COLOUR):
