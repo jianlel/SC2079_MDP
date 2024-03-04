@@ -1,6 +1,7 @@
 1. Need to confirm that the turning radius of actual robot is 20cm
 2. Need to confirm that robot can queue in the steps 
 3. Need to confirm whether their code can take in input from txt file (properly formatted)
+4. Need to know what to feed into the robot such that it can understand to move forward by x amount of cm etc...
 
 How to properly read the robot:
 Command s = Car went STRAIGHT FORWARD

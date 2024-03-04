@@ -46,7 +46,7 @@ class NearestNeighbour:
         stmPath = self.STMPath(optimalPath[0])
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
             file.write(str(optimalPath[0]) + "\n\n")
-            file.write(stmPath + "\n\n")
+            file.write(str(stmPath) + "\n\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
@@ -55,9 +55,9 @@ class NearestNeighbour:
         self.optimalPathWithCoords = simCoords
 
     def euclideanDistance(self, start, end):
-
         return ((end[0]-start[0])**2 + (end[1]-start[1])**2)**0.5
     
+
     def totalDistance(self, optimalPath):
         distances = {
             's': 10,
@@ -74,8 +74,10 @@ class NearestNeighbour:
                 total_distance += distances[char]
         return total_distance
     
+
     def STMPath(self, optimalPath):
         result = []
+        final_result = []
 
         for count in optimalPath:
             processed_string = ''
@@ -85,7 +87,28 @@ class NearestNeighbour:
             result.append(processed_string)
 
         final_string = ' '.join(result)
-        return final_string
+        
+        substrings = final_string.split(' ')
+        for substring in substrings:
+            path = []
+            current_command = None
+            current_distance = 0
+
+            for char in substring:
+                if char in settings.COMMANDS:
+                    if current_command == settings.COMMANDS[char]:
+                        current_distance += 10
+                    else:
+                        if current_command:
+                            path.append((current_command, current_distance))
+                        current_command = settings.COMMANDS[char]
+                        current_distance = 10
+
+            if current_command:
+                path.append((current_command, current_distance))
+
+        return final_result
+        
 
     def findPath(self, targetLocations: list):
         """
