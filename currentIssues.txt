@@ -1,8 +1,6 @@
-1. scanning not working properly because direction not updated in time (they take previous direction after first time check)
-    --> can possibly take from font render portion for direction 
-2. Draw out the start zone (under Arena.py)
-3. Add an obstacle generation function that can provide obstacle dynamically (maybe through txt file, or through user input?)
-
+1. Need to confirm that the turning radius of actual robot is 20cm
+2. Need to confirm that robot can queue in the steps 
+3. Need to confirm whether their code can take in input from txt file (properly formatted)
 
 How to properly read the robot:
 Command s = Car went STRAIGHT FORWARD

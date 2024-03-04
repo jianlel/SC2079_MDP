@@ -113,12 +113,12 @@ def getObstaclesThroughTxt():
         if len(components) == 3:
             x = components[0]
             y = components[1]
-            dir = components[2].strip()
+            dir = components[2].strip().upper()
             id = id_counter
 
             obs = Obstacle((int(x), int(y)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
             test.append(obs)
-            id += 1
+            id_counter += 1
 
     return test
 

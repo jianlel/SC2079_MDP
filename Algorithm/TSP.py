@@ -43,12 +43,11 @@ class NearestNeighbour:
         print("Stm path", optimalPath[0])
         print("coords", optimalPath[1])
         dist = self.totalDistance(optimalPath[0])
+        stmPath = self.STMPath(optimalPath[0])
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
-            file.write(str(optimalPath[0]))
-            file.write("\n")
-            file.write("\n")
-            file.write("Total distance travelled is: " + str(dist))
-            file.write("\n")
+            file.write(str(optimalPath[0]) + "\n\n")
+            file.write(stmPath + "\n\n")
+            file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
         self.commandList = list(optimalPath[0]), coords
@@ -74,6 +73,19 @@ class NearestNeighbour:
             for char in count[1].split(','):
                 total_distance += distances[char]
         return total_distance
+    
+    def STMPath(self, optimalPath):
+        result = []
+
+        for count in optimalPath:
+            processed_string = ''
+            for char in count[1].split(','):
+                if char in {'s', 'v', 'u', 'b', 'd', 'w'}:
+                    processed_string += char
+            result.append(processed_string)
+
+        final_string = ' '.join(result)
+        return final_string
 
     def findPath(self, targetLocations: list):
         """
