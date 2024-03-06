@@ -77,7 +77,6 @@ class NearestNeighbour:
 
     def STMPath(self, optimalPath):
         result = []
-        final_result = []
 
         for count in optimalPath:
             processed_string = ''
@@ -86,15 +85,19 @@ class NearestNeighbour:
                     processed_string += char
             result.append(processed_string)
 
-        final_string = ' '.join(result)
-        
-        substrings = final_string.split(' ')
-        for substring in substrings:
+        path = self.convertToSTM(result)
+
+        return path
+
+    def convertToSTM(self, data):
+        final_result = []
+
+        for path_string in data:
             path = []
             current_command = None
             current_distance = 0
 
-            for char in substring:
+            for char in path_string:
                 if char in settings.COMMANDS:
                     if current_command == settings.COMMANDS[char]:
                         current_distance += 10
@@ -103,12 +106,13 @@ class NearestNeighbour:
                             path.append((current_command, current_distance))
                         current_command = settings.COMMANDS[char]
                         current_distance = 10
-
+            
             if current_command:
                 path.append((current_command, current_distance))
+            
+            final_result.append(path)
 
         return final_result
-        
 
     def findPath(self, targetLocations: list):
         """
