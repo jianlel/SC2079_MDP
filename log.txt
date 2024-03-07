@@ -1,6 +1,4 @@
-[(2, 's,s,s,s,s,s,s,s,s,s,s,d,s'), (1, 'v,s,s,s,s,s,s,s,s,s,u,s,u'), (5, 'b,v,s,s,s,s,s,s,s'), (3, 'v,s,s,s,u,s,s,s,s,u,s,s,s,s,u,s'), (4, 'b,b,d,s')]
-
-[[('forward', 110), ('right', 10), ('forward', 10)], [('reverse left', 10), ('forward', 90), ('left', 10), ('forward', 10), ('left', 10)], [('backward', 10), ('reverse left', 10), ('forward', 70)], [('reverse left', 10), ('forward', 30), ('left', 10), ('forward', 40), ('left', 10), ('forward', 40), ('left', 10), ('forward', 10)], [('backward', 20), ('right', 10), ('forward', 10)]]
+[['FW110', 'C0900', 'FW010'], ['BL000', 'FW090', 'A0900', 'FW010', 'A0900'], ['BW010', 'BL000', 'FW070'], ['BL000', 'FW030', 'A0900', 'FW040', 'A0900', 'FW040', 'A0900', 'FW010'], ['BW020', 'C0900', 'FW010']]
 
 Total distance travelled is: 764.1592653589794
 

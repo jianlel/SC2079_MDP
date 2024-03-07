@@ -45,7 +45,7 @@ class NearestNeighbour:
         dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
-            file.write(str(optimalPath[0]) + "\n\n")
+            #file.write(str(optimalPath[0]) + "\n\n")
             file.write(str(stmPath) + "\n\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
@@ -85,11 +85,11 @@ class NearestNeighbour:
                     processed_string += char
             result.append(processed_string)
 
-        path = self.convertToSTM(result)
+        path = self.convertToSTMCommands(result)
 
         return path
 
-    def convertToSTM(self, data):
+    def convertToSTMCommands(self, data):
         final_result = []
 
         for path_string in data:
@@ -103,14 +103,27 @@ class NearestNeighbour:
                         current_distance += 10
                     else:
                         if current_command:
-                            path.append((current_command, current_distance))
+                            s = current_command + str(current_distance).zfill(3)
+                            path.append(s)
                         current_command = settings.COMMANDS[char]
                         current_distance = 10
             
             if current_command:
-                path.append((current_command, current_distance))
+                s = current_command + str(current_distance).zfill(3)
+                path.append(s)
             
             final_result.append(path)
+
+        for commands in final_result:
+            for i in range(len(commands)):
+                if commands[i][0] == 'C':
+                    commands[i] = 'C0900'
+                elif commands[i][0] == 'A':
+                    commands[i] = 'A0900'
+                elif commands[i][:2] == 'BL':
+                    commands[i] = 'BL000'
+                elif commands[i][:2] == 'BR':
+                    commands[i] = 'BR000'
 
         return final_result
 

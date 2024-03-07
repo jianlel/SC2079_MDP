@@ -29,12 +29,12 @@ STUFF_X_OFFSET = 10
 STUFF_Y_OFFSET = 10
 
 COMMANDS = {
-    's': 'forward',
-    'b': 'backward',
-    'd': 'right',
-    'u': 'left',
-    'w': 'reverse right',
-    'v': 'reverse left'
+    's': 'FW',
+    'b': 'BW',
+    'd': 'C',
+    'u': 'A',
+    'w': 'BR',
+    'v': 'BL'
 }
 
 OUTPUT_FILE_PATH = "log.txt"
