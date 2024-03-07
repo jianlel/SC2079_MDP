@@ -32,4 +32,13 @@ OUTPUT_FILE_PATH = "log.txt"
 
 INPUT_FILE_PATH = "input.txt"
 
+COMMANDS = {
+    's': 'FW',
+    'b': 'BW',
+    'd': 'C',
+    'u': 'A',
+    'w': 'BR',
+    'v': 'BL'
+}
+
 
