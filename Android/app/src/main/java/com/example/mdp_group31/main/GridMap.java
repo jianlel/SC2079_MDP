@@ -1241,7 +1241,7 @@ public class GridMap extends View {
                 obstacle.put("x", currentObstacle[0]-1);
                 obstacle.put("y", currentObstacle[1]-1);
                 // Assuming you want to convert the character direction into an integer direction
-                obstacle.put("d", directionToInteger(imageBearing.charAt(0))); // You need to implement this method
+                obstacle.put("d", imageBearing); // You need to implement this method
                 obstacle.put("id", currentObstacle[2]);
 
                 obstaclesArray.put(obstacle);
