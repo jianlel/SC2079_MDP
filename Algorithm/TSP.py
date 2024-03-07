@@ -44,9 +44,10 @@ class NearestNeighbour:
         print("coords", optimalPath[1])
         dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
+        limitedSTMPath = self.STMLimitations(stmPath)
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
             #file.write(str(optimalPath[0]) + "\n\n")
-            file.write(str(stmPath) + "\n\n")
+            file.write(str(limitedSTMPath) + "\n\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
@@ -117,15 +118,44 @@ class NearestNeighbour:
         for commands in final_result:
             for i in range(len(commands)):
                 if commands[i][0] == 'C':
-                    commands[i] = 'C0900'
+                    commands[i] = 'C0890'
                 elif commands[i][0] == 'A':
-                    commands[i] = 'A0900'
+                    commands[i] = 'A0890'
                 elif commands[i][:2] == 'BL':
                     commands[i] = 'BL000'
                 elif commands[i][:2] == 'BR':
                     commands[i] = 'BR000'
 
         return final_result
+    
+    def STMLimitations(self, data):
+        result = []
+
+        for commands in data:
+            inner_result = []
+            for string in commands:
+                if string[0:2] != 'FW' and string[0:2] != 'BW':
+                    inner_result.append(string)
+                elif string[0:2] == 'FW':
+                    distance = int(string[2:5])
+                    if distance > 90:
+                        inner_result.append('FW900')
+                        distance -= 90
+                        inner_result.append('FW' + str(distance) + '0')
+                    else:
+                        inner_result.append('FW' + str(distance) + '0')
+                elif string[0:2] == 'BW':
+                    distance = int(string[2:5])
+                    if distance > 90:
+                        inner_result.append('BW900')
+                        distance -= 90
+                        inner_result.append('BW' + str(distance) + '0')
+                    else:
+                        inner_result.append('BW' + str(distance) + '0')
+                
+            result.append(inner_result)
+
+        return result
 
     def findPath(self, targetLocations: list):
         """

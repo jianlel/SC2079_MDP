@@ -124,5 +124,9 @@ def getObstaclesThroughTxt():
 
 # Need to take in input from the android app to generate obstacles 
 # Then feed back to the RPI the path generated on the log.txt
-def getObstaclesReal():
-    pass
+def getObstaclesThroughJson(obstacles):
+    test = []
+    
+
+    return test
+    
