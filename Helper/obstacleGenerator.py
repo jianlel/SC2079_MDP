@@ -1,3 +1,4 @@
+import json
 import Helper.settings as settings
 from Entities.Obstacle import Obstacle
 
@@ -9,7 +10,7 @@ from Entities.Obstacle import Obstacle
 """
 
 def getTestObstacles():
-    test = [Obstacle((50, 90), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1'),
+    test = [Obstacle((70, 100), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1'),
             Obstacle((70, 140), "W", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '2'),
             Obstacle((120, 90), "E", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '3'),
             Obstacle((150, 150), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '4'),
@@ -124,9 +125,17 @@ def getObstaclesThroughTxt():
 
 # Need to take in input from the android app to generate obstacles 
 # Then feed back to the RPI the path generated on the log.txt
-def getObstaclesThroughJson(obstacles):
+def getObstaclesThroughJson(obstacles_data):
     test = []
     
+    for obstacle_data in obstacles_data.values():
+        x = obstacle_data["x"]
+        y = obstacle_data["y"]
+        dir = obstacle_data["direction"].strip().upper()
+        id = obstacle_data["uid"]
 
+        obs = Obstacle((int(x), int(y)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
+        test.append(obs)
+        
     return test
     
