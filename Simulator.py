@@ -92,6 +92,25 @@ class Simulator:
         pygame.time.set_timer(self.timer, 1000)
         pygame.display.set_caption("Car go vroom vroom")
 
+def initialize_without_simulator(self):
+    if self.shortestPath == True:
+        TSP = Astar(self.env, (0, 0, DIRECTION.TOP, 'P'), self.env.getTargetLocation()[0])
+        TSP.computePath()
+        self.optimalCoords = TSP.getPath()
+        self.commandList = TSP.getCommandPath()
+
+    # If the robot has reached the obstacle
+    else:
+        TSP = NearestNeighbour(self.env, (0, 0, DIRECTION.TOP, 'P'))
+        TSP.computeSequence()
+        self.optimalCoords = TSP.getOptimalWithCoords()
+        self.commandList = TSP.convert_to_simulator_commands()
+        print(self.optimalCoords)
+        with open(settings.OUTPUT_FILE_PATH, "a") as file:
+            file.write("\n")
+            file.write(str(self.optimalCoords) + "\n")
+
+
     def render(self):
         if len(self.commandList) > 0 and self.commandCounter <= len(self.commandList) - 1:
             self.text = self.font.render("Command: " + self.commandList[self.commandCounter], True, settings.GREEN,

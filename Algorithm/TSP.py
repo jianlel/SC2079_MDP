@@ -45,9 +45,9 @@ class NearestNeighbour:
         dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
         limitedSTMPath = self.STMLimitations(stmPath)
-        bufferedPath = self.addBuffer(limitedSTMPath)
+        #bufferedPath = self.addBuffer(limitedSTMPath)
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
-            file.write(str(bufferedPath) + "\n\n")
+            file.write(str(limitedSTMPath) + "\n\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
@@ -140,6 +140,7 @@ class NearestNeighbour:
 
         return result
     
+    """
     def addBuffer(self, data):
         result = []
 
@@ -155,7 +156,8 @@ class NearestNeighbour:
             result.append(inner_result)
         
         return result
-
+    """
+    
     def totalDistance(self, optimalPath):
         distances = {
             's': 5,

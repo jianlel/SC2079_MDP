@@ -24,6 +24,13 @@ def main():
     sim.initialize()
     sim.run()
 
+    """
+    with open("log.txt" , "r") as file:
+        command_string = file.readline().strip()
+
+    return command_string
+    """
+
 if __name__ == '__main__':
     main()
 
