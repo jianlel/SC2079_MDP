@@ -35,6 +35,8 @@ class Arena:
         start = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET + 20, self.blockSize * 4, self.blockSize * 4)
         pygame.draw.rect(SCREEN, settings.YELLOW, start)
 
+        #Draw the borders surrounding the arena
+
 
     def drawBorder(self, obstacle,  SCREEN, COLOUR, ob):
         if obstacle.imageOrientation == "N":
@@ -57,6 +59,8 @@ class Arena:
         pygame.draw.line(SCREEN, COLOUR, rectOb.topright, rectOb.bottomright, 2)
         pygame.draw.line(SCREEN, COLOUR, rectOb.bottomleft, rectOb.bottomright, 2)
         pygame.draw.line(SCREEN, COLOUR, rectOb.topleft, rectOb.bottomleft, 2)
+
+
     def drawStuff(self, stuff: list[tuple], SCREEN, COLOUR):
         for s in stuff:
             pygame.draw.circle(SCREEN, COLOUR, self.posConverter(s), 20)

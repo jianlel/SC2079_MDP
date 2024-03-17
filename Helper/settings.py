@@ -36,6 +36,13 @@ COMMANDS = {
     'v': 'BL'
 }
 
+DIR = {
+    0: 'N',
+    4: 'S',
+    6: 'W',
+    2: 'E'
+}
+
 OUTPUT_FILE_PATH = "log.txt"
 
 INPUT_FILE_PATH = "input.txt"

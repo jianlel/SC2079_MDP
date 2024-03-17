@@ -197,8 +197,8 @@ class Simulator:
             pygame.display.set_caption("Pathing Done")
             self.completed = True
             pygame.image.save(self.screen, "test.png")
-            pygame.quit()
-            sys.exit()
+            #pygame.quit()
+            #sys.exit()
 
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:

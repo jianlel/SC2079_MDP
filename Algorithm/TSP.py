@@ -40,8 +40,8 @@ class NearestNeighbour:
             else:
                 continue
         optimalPath = min(costList, key=lambda tup: tup[2])
-        print("Stm path", optimalPath[0])
-        print("coords", optimalPath[1])
+        #print("Stm path", optimalPath[0])
+        #print("coords", optimalPath[1])
         dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
         limitedSTMPath = self.STMLimitations(stmPath)
@@ -53,7 +53,7 @@ class NearestNeighbour:
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
         self.commandList = list(optimalPath[0]), coords
-        print(("rpi path", self.commandList))
+        #print(("rpi path", self.commandList))
         self.optimalPathWithCoords = simCoords
 
     def euclideanDistance(self, start, end):
@@ -119,9 +119,11 @@ class NearestNeighbour:
         for commands in final_result:
             for i in range(len(commands)):
                 if commands[i][0] == 'C':
-                    commands[i] = 'C0890'
+                    #commands[i] = 'C0890'
+                    commands[i] = 'FR000'
                 elif commands[i][0] == 'A':
-                    commands[i] = 'A0890'
+                    #commands[i] = 'A0890
+                    commands[i] = 'FL000'
                 elif commands[i][:2] == 'BL':
                     commands[i] = 'BL000'
                 elif commands[i][:2] == 'BR':
