@@ -22,8 +22,22 @@ class staticEnvironment:
     # Takes in (x, y) coordinates and time
     # Returns boolean value True/False
     def isWalkable(self, x, y, time=0):
+        # Check Bottom Left of car
         if x < 0 or x > (self.dimensions[0] - 30) or y < 0 or (y > self.dimensions[1] - 30):
             return False
+        
+        # Check Top Left of car
+        if x < 0 or x > (self.dimensions[0]) or y < 0 or (y > self.dimensions[1] - 30):
+            return False
+        
+        # Check Bottom Right of car
+        if x < 0 or x > (self.dimensions[0]-30) or y < 0 or (y > self.dimensions[1]):
+            return False
+        
+        # Check Top Right of car
+        if x < 0 or x > (self.dimensions[0]) or y < 0 or (y > self.dimensions[1]):
+            return False
+        
         robotRect = Rectangle((x, y), 'R')
         for obstacle in self.obstacles:
             pos = Rectangle(obstacle.pos, 'O')

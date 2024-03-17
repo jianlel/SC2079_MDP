@@ -40,25 +40,43 @@ class NearestNeighbour:
             else:
                 continue
         optimalPath = min(costList, key=lambda tup: tup[2])
-        print("Stm path", optimalPath[0])
-        print("coords", optimalPath[1])
+        #print("Stm path", optimalPath[0])
+        #print("coords", optimalPath[1])
         dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
         limitedSTMPath = self.STMLimitations(stmPath)
-        #bufferedPath = self.addBuffer(limitedSTMPath)
+        bufferedSTMPath = self.addBuffer(limitedSTMPath)
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
-            file.write(str(limitedSTMPath) + "\n\n")
+            #file.write(str(optimalPath[0]) + "\n\n")
+            file.write(str(bufferedSTMPath) + "\n\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
         self.commandList = list(optimalPath[0]), coords
-        print(("rpi path", self.commandList))
+        #print(("rpi path", self.commandList))
         self.optimalPathWithCoords = simCoords
 
     def euclideanDistance(self, start, end):
-
         return ((end[0]-start[0])**2 + (end[1]-start[1])**2)**0.5
     
+
+    def totalDistance(self, optimalPath):
+        distances = {
+            's': 10,
+            'b': 10,
+            'd': 10 * np.pi,
+            'u': 10 * np.pi,
+            'w': 10 * np.pi,
+            'v': 10 * np.pi
+        }
+
+        total_distance = 0
+        for count in optimalPath:
+            for char in count[1].split(','):
+                total_distance += distances[char]
+        return total_distance
+    
+
     def STMPath(self, optimalPath):
         result = []
 
@@ -72,7 +90,7 @@ class NearestNeighbour:
         path = self.convertToSTMCommands(result)
 
         return path
-    
+
     def convertToSTMCommands(self, data):
         final_result = []
 
@@ -84,13 +102,13 @@ class NearestNeighbour:
             for char in path_string:
                 if char in settings.COMMANDS:
                     if current_command == settings.COMMANDS[char]:
-                        current_distance += 5
+                        current_distance += 10
                     else:
                         if current_command:
                             s = current_command + str(current_distance).zfill(3)
                             path.append(s)
                         current_command = settings.COMMANDS[char]
-                        current_distance = 5
+                        current_distance = 10
             
             if current_command:
                 s = current_command + str(current_distance).zfill(3)
@@ -101,16 +119,18 @@ class NearestNeighbour:
         for commands in final_result:
             for i in range(len(commands)):
                 if commands[i][0] == 'C':
-                    commands[i] = 'C0900'
+                    #commands[i] = 'C0890'
+                    commands[i] = 'FR000'
                 elif commands[i][0] == 'A':
-                    commands[i] = 'A0900'
+                    #commands[i] = 'A0890
+                    commands[i] = 'FL000'
                 elif commands[i][:2] == 'BL':
                     commands[i] = 'BL000'
                 elif commands[i][:2] == 'BR':
                     commands[i] = 'BR000'
 
         return final_result
-
+    
     def STMLimitations(self, data):
         result = []
 
@@ -140,7 +160,6 @@ class NearestNeighbour:
 
         return result
     
-    """
     def addBuffer(self, data):
         result = []
 
@@ -156,23 +175,6 @@ class NearestNeighbour:
             result.append(inner_result)
         
         return result
-    """
-    
-    def totalDistance(self, optimalPath):
-        distances = {
-            's': 5,
-            'b': 5,
-            'd': 5 * np.pi,
-            'u': 5 * np.pi,
-            'w': 5 * np.pi,
-            'v': 5 * np.pi
-        }
-
-        total_distance = 0
-        for count in optimalPath:
-            for char in count[1].split(','):
-                total_distance += distances[char]
-        return total_distance
 
     def findPath(self, targetLocations: list):
         """
