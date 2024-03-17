@@ -46,7 +46,11 @@ class Arena:
         elif obstacle.imageOrientation == "W":
             pygame.draw.line(SCREEN, COLOUR, ob.topleft, ob.bottomleft, 2)
 
-
+    def drawInvisibleBorder(self, SCREEN):
+        edge = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET - 300, self.blockSize * 20, self.blockSize * 20)
+        pygame.draw.rect(SCREEN, settings.PURPLE, edge, 1)
+        self.rect = edge
+        return self.rect
 
     def drawInvisibleObstacle(self, obstacle: Obstacle, SCREEN, COLOUR):
         newRect = Rectangle(obstacle.pos, 'O')
@@ -71,6 +75,7 @@ class Arena:
         SCREEN.fill((0,0,0))
         self.drawGrid(SCREEN)
         robot.drawCar(SCREEN)
+        self.drawInvisibleBorder(SCREEN)
 
         self.robotCollisionRect(robot,SCREEN, (0, 100, 255))
 

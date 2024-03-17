@@ -15,4 +15,6 @@ class RectRobot:
         obRect = pygame.Rect(pos, (160, 160))
         obRect.topleft = pos
         return self.rect.colliderect(obRect)
-
+    
+    
+    

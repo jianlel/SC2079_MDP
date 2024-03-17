@@ -62,6 +62,8 @@ class Simulator:
         self.text.get_rect().center = (600, 400)
         self.screen.blit(self.text, self.text.get_rect())
 
+        
+
         # If the robot has not reached the obstacle yet
         if self.shortestPath == True:
             TSP = Astar(self.env, (0, 0, DIRECTION.TOP, 'P'), self.env.getTargetLocation()[0])
@@ -77,7 +79,7 @@ class Simulator:
             self.commandList = TSP.convert_to_simulator_commands()
             print(self.optimalCoords)
             with open(settings.OUTPUT_FILE_PATH, "a") as file:
-                file.write("\n")
+                file.write("\n")    
                 file.write(str(self.optimalCoords) + "\n")
 
         pygame.display.set_caption("Starting simulator...")
@@ -85,12 +87,15 @@ class Simulator:
         self.arena = Arena(self.obstacles, 400 + settings.GRID_OFFSET, 400 + settings.GRID_OFFSET, settings.BLOCK_SIZE)
         self.robot = Robot(self.arena.obList)
         self.arena.drawGrid(self.screen)
+        self.arena.drawInvisibleBorder(self.screen)
+
         self.robot.drawCar(self.screen)
         self.moveCar = pygame.USEREVENT + 0
         self.timer = pygame.USEREVENT + 1
         pygame.time.set_timer(self.moveCar, 1000)
         pygame.time.set_timer(self.timer, 1000)
         pygame.display.set_caption("Car go vroom vroom")
+        self.robot.car_rect.clamp_ip(self.arena.drawInvisibleBorder)
 
     def initialize_without_simulator(self):
         if self.shortestPath == True:
