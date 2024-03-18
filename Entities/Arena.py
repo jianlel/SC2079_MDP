@@ -57,15 +57,16 @@ class Arena:
         pygame.draw.line(SCREEN, COLOUR, rectOb.topright, rectOb.bottomright, 2)
         pygame.draw.line(SCREEN, COLOUR, rectOb.bottomleft, rectOb.bottomright, 2)
         pygame.draw.line(SCREEN, COLOUR, rectOb.topleft, rectOb.bottomleft, 2)
+
     def drawStuff(self, stuff: list[tuple], SCREEN, COLOUR):
         for s in stuff:
-            pygame.draw.circle(SCREEN, COLOUR, self.posConverter(s), 20)
+            pygame.draw.circle(SCREEN, COLOUR, self.posConverter(s), 10)
 
 
     def drawStuff(self, stuff: list[tuple], SCREEN, COLOUR):
         for s in stuff:
             print(s)
-            pygame.draw.circle(SCREEN, COLOUR, self.posConverterStuff(s), 10)
+            pygame.draw.circle(SCREEN, COLOUR, self.posConverterStuff(s), 5)
 
     def updateGrid(self, robot, SCREEN):
         SCREEN.fill((0,0,0))

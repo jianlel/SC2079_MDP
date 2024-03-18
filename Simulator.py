@@ -243,7 +243,7 @@ class Simulator:
         pygame.display.flip()
 
     def run(self):
-        print(self.scanCheck)
+        #print(self.scanCheck)
         while self.running:
             self.events()
             self.render()

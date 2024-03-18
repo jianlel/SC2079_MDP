@@ -55,15 +55,18 @@ def path_finding():
 
     jsonObstacles = obstacleGenerator.getObstaclesThroughJson(content)
     
-    print("test1")
+    #print("test1")
     sim = Simulator(staticEnvironment((200, 200), jsonObstacles), jsonObstacles, False)   
     sim.initialize_without_simulator()
     #sim.initialize()
     #sim.run()
-    print("test2")
+    #print("test2")
     
     with open("log.txt" , "r") as file:
         command_string = file.readline().strip()
+
+    if command_string != "": 
+        print("Command string successfully generated and sent to STM")
 
     return command_string
     
