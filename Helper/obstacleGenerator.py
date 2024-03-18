@@ -81,9 +81,7 @@ def getTestObstacles5():
 
 def getTestObstaclesTest(): 
     test = [
-        Obstacle((180, 190), "S", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1'),
-        Obstacle((100, 180), "W", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '2'),
-        Obstacle((100, 110), "E", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '3'),
+        Obstacle((50, 50 ), "W", (settings.BLOCK_SIZE, settings.BLOCK_SIZE), '1')
     ]
 
     return test
@@ -130,16 +128,13 @@ def getObstaclesThroughTxt():
 def getObstaclesThroughJson(obstacles_data):
     test = []
     
-    obstacles = obstacles_data["value"]["obstacles"]
+    for obstacle_data in obstacles_data.values():
+        x = obstacle_data["x"]
+        y = obstacle_data["y"]
+        dir = obstacle_data["direction"].strip().upper()
+        id = obstacle_data["uid"]
 
-    for obstacle in obstacles:
-        x = obstacle["x"]
-        y = obstacle["y"]
-        id = obstacle["id"]
-        dir_code = obstacle["d"]
-        dir = settings.DIR[int(dir_code)]
-
-        obs = Obstacle((int(x * 10), int(y * 10)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
+        obs = Obstacle((int(x), int(y)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
         test.append(obs)
         
     return test

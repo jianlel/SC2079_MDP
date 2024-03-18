@@ -52,21 +52,18 @@ def path_finding():
     #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
     inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
     """
-    print(content)
-    jsonObstacles = obstacleGenerator.getObstaclesThroughJson(content)
-    #print(jsonObstacles)
-    #print(jsonObstacles[0].pos)
 
+    jsonObstacles = obstacleGenerator.getObstaclesThroughJson(content)
+    
+    print("test1")
     sim = Simulator(staticEnvironment((200, 200), jsonObstacles), jsonObstacles, False)   
     sim.initialize_without_simulator()
     #sim.initialize()
     #sim.run()
+    print("test2")
     
     with open("log.txt" , "r") as file:
         command_string = file.readline().strip()
-
-    print()
-    print(command_string)
 
     return command_string
     
@@ -82,12 +79,12 @@ def simulation():
     #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
     inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
 
-    sim = Simulator(staticEnvironment((400, 400), obs), obs, False)   
-    sim.initialize_without_simulator()
-    #sim.initialize()
-    #sim.run()
+    sim = Simulator(staticEnvironment((400, 400), obs5), obs5, False)   
+    #sim.initialize_without_simulator()
+    sim.initialize()
+    sim.run()
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    #simulation()
+    #app.run(host='0.0.0.0', port=5000, debug=True)
+    simulation()
