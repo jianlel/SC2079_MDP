@@ -128,13 +128,15 @@ def getObstaclesThroughTxt():
 def getObstaclesThroughJson(obstacles_data):
     test = []
     
-    for obstacle_data in obstacles_data.values():
-        x = obstacle_data["x"]
-        y = obstacle_data["y"]
-        dir = obstacle_data["direction"].strip().upper()
-        id = obstacle_data["uid"]
+    obstacles = obstacles_data["value"]["obstacles"]
+    for obstacle in obstacles:
+        x = obstacle["x"]
+        y = obstacle["y"]
+        id = obstacle["id"]
+        dir_code = obstacle["d"]
+        dir = settings.DIR[int(dir_code)]
 
-        obs = Obstacle((int(x), int(y)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
+        obs = Obstacle((int(x * 10), int(y * 10)), dir, (settings.BLOCK_SIZE, settings.BLOCK_SIZE), id)
         test.append(obs)
         
     return test
