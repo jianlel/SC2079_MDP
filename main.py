@@ -83,11 +83,11 @@ def simulation():
     inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
 
     sim = Simulator(staticEnvironment((400, 400), obs), obs, False)   
-    sim.initialize_without_simulator()
-    #sim.initialize()
-    #sim.run()
+    #sim.initialize_without_simulator()
+    sim.initialize()
+    sim.run()
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    #simulation()
+    #app.run(host='0.0.0.0', port=5000, debug=True)
+    simulation()

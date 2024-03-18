@@ -3,15 +3,35 @@ import json
 url = "http://127.0.0.1:5000" 
  
  
-filename = r'C:\Users\hooji\OneDrive\Desktop\holder\json.txt'
+#filename = r'C:\Users\hooji\OneDrive\Desktop\holder\json.txt'
 
 x = {
-	"obstacle1": {"x": 70, "y": 100, "direction": "s", "uid": 1},
-	"obstacle2": {"x": 70, "y": 140, "direction": "w", "uid": 2},
-	"obstacle3": {"x": 120, "y": 90, "direction": "e", "uid": 3},
-	"obstacle4": {"x": 150, "y": 150, "direction": "s", "uid": 4},
-	"obstacle5": {"x": 150, "y": 40, "direction": "w", "uid": 5}
-}
+  "cat": "obstacles",
+  "value": {
+    "obstacles": [
+      {
+        "x": 7,
+        "y": 10,
+        "d": 4,
+        "id": 1
+      },
+      {
+        "x": 7,
+        "y": 14,
+        "d": 6,
+        "id": 2
+      },
+      {
+        "x": 12,
+        "y": 9,
+        "d": 2,
+        "id": 3
+      },
+
+    ],
+    "mode": "0"
+  }
+}	
 
 #json_converted = json.dumps(x, indent = 4)	
 #print(type(json_converted))

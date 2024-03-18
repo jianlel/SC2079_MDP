@@ -142,22 +142,22 @@ class staticEnvironment:
             if ob.imageOrientation == "E":
                 for x in possible_pos["E"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0] - 20, ob.pos[1] + x[1], DIRECTION.LEFT
+                        valid_pos = ob.pos[0] + x[0] - 10, ob.pos[1] + x[1], DIRECTION.LEFT
                         break
             elif ob.imageOrientation == "N":
                 for x in possible_pos["N"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] - 20, DIRECTION.BOTTOM
+                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] - 10, DIRECTION.BOTTOM
                         break
             elif ob.imageOrientation == "W":
                 for x in possible_pos["W"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1], DIRECTION.RIGHT
+                        valid_pos = ob.pos[0] + x[0] - 10, ob.pos[1] + x[1], DIRECTION.RIGHT
                         break
             else:
                 for x in possible_pos["S"]:
                     if self.isWalkable(ob.pos[0] + x[0], ob.pos[1] + x[1]):
-                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1], DIRECTION.TOP
+                        valid_pos = ob.pos[0] + x[0], ob.pos[1] + x[1] - 10, DIRECTION.TOP
                         break
             if valid_pos:
                 targetLocations.append(valid_pos)

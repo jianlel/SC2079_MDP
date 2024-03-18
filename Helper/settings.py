@@ -46,5 +46,3 @@ DIR = {
 OUTPUT_FILE_PATH = "log.txt"
 
 INPUT_FILE_PATH = "input.txt"
-
-
