@@ -69,11 +69,14 @@ class NearestNeighbour:
                     processed_string += char
             result.append(processed_string)
 
-        path = self.convertToSTMCommands(result)
+        # For inside lab
+        path = self.convertToSTMCommandsInsideLab(result)
+        # For outside lab
+        #path = self.convertToSTMCommandsOutsideLab(result)
 
         return path
     
-    def convertToSTMCommands(self, data):
+    def convertToSTMCommandsInsideLab(self, data):
         final_result = []
 
         for path_string in data:
@@ -108,6 +111,46 @@ class NearestNeighbour:
                     commands[i] = 'BL000'
                 elif commands[i][:2] == 'BR':
                     commands[i] = 'BR000'
+
+        return final_result
+    
+    def convertToSTMCommandsOutsideLab(self, data):
+        final_result = []
+
+        for path_string in data:
+            path = []
+            current_command = None
+            current_distance = 0
+
+            for char in path_string:
+                if char in settings.COMMANDS:
+                    if current_command == settings.COMMANDS[char]:
+                        current_distance += 10
+                    else:
+                        if current_command:
+                            s = current_command + str(current_distance).zfill(3)
+                            path.append(s)
+                        current_command = settings.COMMANDS[char]
+                        current_distance = 10
+            
+            if current_command:
+                s = current_command + str(current_distance).zfill(3)
+                path.append(s)
+            
+            final_result.append(path)
+
+        for commands in final_result:
+            for i in range(len(commands)):
+                if commands[i][0] == 'C':
+                    #commands[i] = 'C0890'
+                    commands[i] = 'FR200'
+                elif commands[i][0] == 'A':
+                    #commands[i] = 'A0890
+                    commands[i] = 'FL200'
+                elif commands[i][:2] == 'BL':
+                    commands[i] = 'BL200'
+                elif commands[i][:2] == 'BR':
+                    commands[i] = 'BR200'
 
         return final_result
 
