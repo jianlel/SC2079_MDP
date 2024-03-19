@@ -13,7 +13,6 @@ import json
 import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-#from model import *
 
 app = Flask(__name__)
 CORS(app)
@@ -56,17 +55,19 @@ def path_finding():
     jsonObstacles = obstacleGenerator.getObstaclesThroughJson(content)
     #print(jsonObstacles)
     #print(jsonObstacles[0].pos)
-
+    print("test1")
     sim = Simulator(staticEnvironment((200, 200), jsonObstacles), jsonObstacles, False)   
     sim.initialize_without_simulator()
+    print("test2")
     #sim.initialize()
     #sim.run()
     
     with open("log.txt" , "r") as file:
         command_string = file.readline().strip()
 
-    print()
-    print(command_string)
+    if command_string != "":
+        print(command_string)
+        print("Command string has been successfully generated and sent over")
 
     return command_string
     
@@ -89,5 +90,5 @@ def simulation():
     
 
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0', port=5000, debug=True)
-    simulation()
+    app.run(host='0.0.0.0', port=5000, debug=True)
+    #simulation()
