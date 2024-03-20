@@ -46,6 +46,7 @@ class Simulator:
         self.distanceTravelled = 0 
         self.distanceText = None
         self.completed = False
+        self.edge = None
 
 
     # Use this function to initialize the simulator
@@ -61,6 +62,8 @@ class Simulator:
         self.text = self.font.render("MDP Algo", True, settings.WHITE, settings.BLACK)
         self.text.get_rect().center = (600, 400)
         self.screen.blit(self.text, self.text.get_rect())
+        self.edge = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET - 300, settings.BLOCK_SIZE * 20, settings.BLOCK_SIZE * 20)
+        pygame.draw.rect(self.screen, settings.PURPLE, self.edge, 1)
 
         # If the robot has not reached the obstacle yet
         if self.shortestPath == True:
@@ -246,6 +249,7 @@ class Simulator:
     def run(self):
         #print(self.scanCheck)
         while self.running:
+            self.robot.car_rect.clamp_ip(self.edge)
             self.events()
             self.render()
             self.clock.tick(settings.FRAMES)

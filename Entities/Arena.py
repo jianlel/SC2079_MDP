@@ -60,6 +60,10 @@ class Arena:
         pygame.draw.line(SCREEN, COLOUR, rectOb.bottomleft, rectOb.bottomright, 2)
         pygame.draw.line(SCREEN, COLOUR, rectOb.topleft, rectOb.bottomleft, 2)
 
+    def drawInvisibleBorder(self, SCREEN):
+        edge = pygame.Rect(0 + settings.GRID_OFFSET - 40, 0 + settings.GRID_Y_OFFSET - 340, self.blockSize * 24, self.blockSize * 24)
+        pygame.draw.rect(SCREEN, settings.PURPLE, edge, 1)
+        self.rect = edge
 
     def drawStuff(self, stuff: list[tuple], SCREEN, COLOUR):
         for s in stuff:
@@ -75,7 +79,7 @@ class Arena:
         SCREEN.fill((0,0,0))
         self.drawGrid(SCREEN)
         robot.drawCar(SCREEN)
-
+        self.drawInvisibleBorder(SCREEN)
         self.robotCollisionRect(robot,SCREEN, (0, 100, 255))
 
 
