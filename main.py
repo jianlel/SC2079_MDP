@@ -119,7 +119,7 @@ def simulation():
     #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
     inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
 
-    sim = Simulator(staticEnvironment((200, 200), obs5), obs5, False)   
+    sim = Simulator(staticEnvironment((220, 220), obs5), obs5, False)   
     #sim.initialize_without_simulator()
     sim.initialize()
     sim.run()
