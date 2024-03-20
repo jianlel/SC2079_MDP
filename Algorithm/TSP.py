@@ -46,12 +46,14 @@ class NearestNeighbour:
         stmPath = self.STMPath(optimalPath[0])
         limitedSTMPath = self.STMLimitations(stmPath)
         bufferedSTMPath = self.addBuffer(limitedSTMPath)
+        simCoords = optimalPath[1].copy()
+        coords = self.convert_to_coords(optimalPath[1])
+        coordsWithoutRobot = [s.split(', ', 1)[1] for s in coords]
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
             #file.write(str(optimalPath[0]) + "\n\n")
             file.write(str(bufferedSTMPath) + "\n\n")
+            #file.write(str(coordsWithoutRobot) + "\n")
             file.write("Total distance travelled is: " + str(dist) + "\n")
-        simCoords = optimalPath[1].copy()
-        coords = self.convert_to_coords(optimalPath[1])
         self.commandList = list(optimalPath[0]), coords
         #print(("rpi path", self.commandList))
         self.optimalPathWithCoords = simCoords

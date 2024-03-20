@@ -43,6 +43,7 @@ class staticEnvironment:
             pos = Rectangle(obstacle.pos, 'O')
             if robotRect.isCollided(pos):
                 return False
+            
         return True
 
     # Function to check if robot can turn at current position

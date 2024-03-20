@@ -16,7 +16,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-#model = load_model()
+
 model = None
 @app.route('/status', methods=['GET'])
 def status():
@@ -45,7 +45,7 @@ def path_finding():
     obs1 = obstacleGenerator.getTestObstacles1()
     obs2 = obstacleGenerator.getTestObstacles2()
     obs3 = obstacleGenerator.getTestObstacles3()
-    obs4 = obstacleGenerator.getTestObstacles4()
+    obs4 = obstacleGenerato r.getTestObstacles4()
     obs5 = obstacleGenerator.getTestObstacles5()
     obsTest = obstacleGenerator.getTestObstaclesTest()
     #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
@@ -56,9 +56,9 @@ def path_finding():
     #print(jsonObstacles)
     #print(jsonObstacles[0].pos)
     print("test1")
-    sim = Simulator(staticEnvironment((200, 200), jsonObstacles), jsonObstacles, False)   
+    sim = Simulator(staticEnvironment((250, 250), jsonObstacles), jsonObstacles, False)   
     sim.initialize_without_simulator()
-    print("test2")
+    #print("test2")
     #sim.initialize()
     #sim.run()
     
@@ -70,7 +70,7 @@ def path_finding():
         print("Command string has been successfully generated and sent over")
 
     return command_string
-    
+
 
 def simulation():
     obs = obstacleGenerator.getTestObstacles()
@@ -83,12 +83,12 @@ def simulation():
     #userInputObs = obstacleGenerator.getObstaclesThroughUserInput()
     inputTxtObs = obstacleGenerator.getObstaclesThroughTxt()
 
-    sim = Simulator(staticEnvironment((400, 400), obs), obs, False)   
+    sim = Simulator(staticEnvironment((200, 200), inputTxtObs), inputTxtObs, False)   
     #sim.initialize_without_simulator()
     sim.initialize()
     sim.run()
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    #simulation()
+    #app.run(host='0.0.0.0', port=5000, debug=True)
+    simulation()    

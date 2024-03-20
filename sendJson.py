@@ -5,33 +5,7 @@ url = "http://127.0.0.1:5000"
  
 #filename = r'C:\Users\hooji\OneDrive\Desktop\holder\json.txt'
 
-x = {
-  "cat": "obstacles",
-  "value": {
-    "obstacles": [
-      {
-        "x": 7,
-        "y": 10,
-        "d": 4,
-        "id": 1
-      },
-      {
-        "x": 7,
-        "y": 14,
-        "d": 6,
-        "id": 2
-      },
-      {
-        "x": 12,
-        "y": 9,
-        "d": 2,
-        "id": 3
-      },
-
-    ],
-    "mode": "0"
-  }
-}	
+x = {'cat': 'obstacles', 'value': {'obstacles': [{'x': 2, 'y': 12, 'd': 0, 'id': 0}, {'x': 8, 'y': 0, 'd': 0, 'id': 0}, {'x': 18, 'y': 2, 'd': 0, 'id': 0}, {'x': 2, 'y': 11, 'd': 4, 'id': 0}, {'x': 6, 'y': 10, 'd': 2, 'id': 0}, {'x': 15, 'y': 9, 'd': 4, 'id': 0}, {'x': 19, 'y': 15, 'd': 0, 'id': 0}, {'x': 11, 'y': 18, 'd': 4, 'id': 0}], 'mode': '0'}}
 
 #json_converted = json.dumps(x, indent = 4)	
 #print(type(json_converted))
