@@ -46,12 +46,12 @@ class Arena:
         elif obstacle.imageOrientation == "W":
             pygame.draw.line(SCREEN, COLOUR, ob.topleft, ob.bottomleft, 2)
 
+    
     def drawInvisibleBorder(self, SCREEN):
-        edge = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET - 300, self.blockSize * 20, self.blockSize * 20)
+        edge = pygame.Rect(0 + settings.GRID_OFFSET - 40, 0 + settings.GRID_Y_OFFSET - 340, self.blockSize * 24, self.blockSize * 24)
         pygame.draw.rect(SCREEN, settings.PURPLE, edge, 1)
         self.rect = edge
-        return self.rect
-
+    
     def drawInvisibleObstacle(self, obstacle: Obstacle, SCREEN, COLOUR):
         newRect = Rectangle(obstacle.pos, 'O')
         dim = (int(newRect.length/10)*settings.BLOCK_SIZE, int(newRect.length/10)*settings.BLOCK_SIZE)

@@ -46,6 +46,8 @@ class Simulator:
         self.distanceTravelled = 0 
         self.distanceText = None
         self.completed = False
+        self.edge = None
+        
 
 
     # Use this function to initialize the simulator
@@ -61,7 +63,8 @@ class Simulator:
         self.text = self.font.render("MDP Algo", True, settings.WHITE, settings.BLACK)
         self.text.get_rect().center = (600, 400)
         self.screen.blit(self.text, self.text.get_rect())
-
+        self.edge = pygame.Rect(0 + settings.GRID_OFFSET, 0 + settings.GRID_Y_OFFSET - 300, settings.BLOCK_SIZE * 20, settings.BLOCK_SIZE * 20)
+        pygame.draw.rect(self.screen, settings.PURPLE, self.edge, 1)
         
 
         # If the robot has not reached the obstacle yet
@@ -87,7 +90,7 @@ class Simulator:
         self.arena = Arena(self.obstacles, 400 + settings.GRID_OFFSET, 400 + settings.GRID_OFFSET, settings.BLOCK_SIZE)
         self.robot = Robot(self.arena.obList)
         self.arena.drawGrid(self.screen)
-        self.arena.drawInvisibleBorder(self.screen)
+        #self.arena.drawInvisibleBorder(self.edge)
 
         self.robot.drawCar(self.screen)
         self.moveCar = pygame.USEREVENT + 0
@@ -95,7 +98,7 @@ class Simulator:
         pygame.time.set_timer(self.moveCar, 1000)
         pygame.time.set_timer(self.timer, 1000)
         pygame.display.set_caption("Car go vroom vroom")
-        self.robot.car_rect.clamp_ip(self.arena.drawInvisibleBorder)
+        
 
     def initialize_without_simulator(self):
         if self.shortestPath == True:
@@ -251,6 +254,7 @@ class Simulator:
     def run(self):
         print(self.scanCheck)
         while self.running:
+            self.robot.car_rect.clamp_ip(self.edge)
             self.events()
             self.render()
             self.clock.tick(settings.FRAMES)
