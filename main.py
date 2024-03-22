@@ -56,7 +56,7 @@ def path_finding():
     #print(jsonObstacles)
     #print(jsonObstacles[0].pos)
     print("test1")
-    sim = Simulator(staticEnvironment((250, 250), jsonObstacles), jsonObstacles, False)   
+    sim = Simulator(staticEnvironment((200, 200), jsonObstacles), jsonObstacles, False)   
     sim.initialize_without_simulator()
     #print("test2")
     #sim.initialize()

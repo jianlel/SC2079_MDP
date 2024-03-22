@@ -247,8 +247,10 @@ class Simulator:
         pygame.display.flip()
 
     def run(self):
-        #print(self.scanCheck)
         while self.running:
+            print("********")
+            print(self.scanCheck)
+            print("*******")
             self.robot.car_rect.clamp_ip(self.edge)
             self.events()
             self.render()
