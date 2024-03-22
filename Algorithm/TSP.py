@@ -42,18 +42,23 @@ class NearestNeighbour:
         optimalPath = min(costList, key=lambda tup: tup[2])
         #print("Stm path", optimalPath[0])
         #print("coords", optimalPath[1])
-        dist = self.totalDistance(optimalPath[0])
+        #dist = self.totalDistance(optimalPath[0])
         stmPath = self.STMPath(optimalPath[0])
         limitedSTMPath = self.STMLimitations(stmPath)
         bufferedSTMPath = self.addBuffer(limitedSTMPath)
         simCoords = optimalPath[1].copy()
         coords = self.convert_to_coords(optimalPath[1])
         coordsWithoutRobot = [s.split(', ', 1)[1] for s in coords]
+
+        obs_id_list = optimalPath[0]
+        obs_id_list	= [obj[0] for obj in obs_id_list]
+
         with open(settings.OUTPUT_FILE_PATH, "w") as file:
             #file.write(str(optimalPath[0]) + "\n\n")
-            file.write(str(bufferedSTMPath) + "\n\n")
+            file.write(str(bufferedSTMPath) + "\n")
+            file.write(str(obs_id_list) + "\n")
             #file.write(str(coordsWithoutRobot) + "\n")
-            file.write("Total distance travelled is: " + str(dist) + "\n")
+            #file.write("Total distance travelled is: " + str(dist) + "\n")
         self.commandList = list(optimalPath[0]), coords
         #print(("rpi path", self.commandList))
         self.optimalPathWithCoords = simCoords

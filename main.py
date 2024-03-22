@@ -61,9 +61,22 @@ def path_finding():
     #print("test2")
     #sim.initialize()
     #sim.run()
+
     
     with open("log.txt" , "r") as file:
         command_string = file.readline().strip()
+        obstacle_id_path = file.readline().strip()
+    
+    """
+    with open("log.txt", "r") as file:
+        lines = file.readlines()
+
+    command_string = json.loads(lines[0])
+    obstacle_id_path = json.loads(lines[1])
+    """
+    print(obstacle_id_path)
+    command_string += '*'
+    command_string += obstacle_id_path
 
     if command_string != "":
         print(command_string)
@@ -90,5 +103,5 @@ def simulation():
     
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    #simulation()    
+    #app.run(host='0.0.0.0', port=5000, debug=True)
+    simulation()    
