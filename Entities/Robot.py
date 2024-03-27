@@ -23,6 +23,8 @@ class Robot:
 
         self.command = None
         self.obstacles = ob
+        self.bottomLeft = None
+        self.middle = None
 
     def drawCar(self, SCREEN):
         """
@@ -37,6 +39,10 @@ class Robot:
         self.pos = (self.x, self.y)
         # print(self.pos)
         self.car_rect.bottomleft = Arena.posConverter(self.pos)
+        print("This is the car's bottomLeft: " + str(self.bottomLeft))
+        self.bottomLeft = self.car_rect.bottomleft
+        middle_x = self.bottomLeft[0] + 10
+        middle_y = self.bottomLeft[1] + 10
         SCREEN.blit(self.image, self.car_rect)
 
     # noinspection PyTypeChecker

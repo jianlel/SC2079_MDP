@@ -136,11 +136,11 @@ class Simulator:
             self.distanceText.get_rect().center = (600, 0)
             self.screen.blit(self.distanceText, (500, 300))
             
-        """
+        
         self.scanText = self.font.render("Image Scanned: " + str(self.scanCounter), True, settings.GREEN, settings.BLUE)
         self.scanText.get_rect().center = (600, 600)
         self.screen.blit(self.scanText, (500, 100))
-        """
+        
     
     def add_distance(self, action):
         if action == 's':

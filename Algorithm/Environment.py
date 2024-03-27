@@ -119,8 +119,12 @@ class staticEnvironment:
         """
 
         targetLocations = []
-        possible_pos = {"E": [(40, -10), (40, 0), (40, -20)],
-                        "N": [(-10, 40), (0, 40), (-20, 40)],
+        # possible_pos = {"E": [(40, -10), (40, 0), (40, -20), (30, -10), (30, 0), (30, -20)],
+        #                 "N": [(-10, 40), (0, 40), (-20, 40), (-10, 30), (0, 30), (-20, 30)],
+        #                 "W": [(-40, -10), (-40, 0), (-40, -20), (-30, -10), (-30, 0), (-30, -20)],
+        #                 "S": [(-10, -40), (-20, -40), (0, -40), (-10, -30), (-20, -30), (0, -30)]}
+        possible_pos =   {"E": [(40, -10), (40, 0), (40, -20)],
+                        "N": [(-10, 40), (0, 40), (-20, 40), (-10, 30), (0, 30), (-20, 30)],
                         "W": [(-40, -10), (-40, 0), (-40, -20)],
                         "S": [(-10, -40), (-20, -40), (0, -40)]}
 
@@ -149,6 +153,14 @@ class staticEnvironment:
             if valid_pos:
                 targetLocations.append(valid_pos)
                 self.obID.append(ob.ObId)
+            else:
+                pass
+            
+            is_found = valid_pos is not None
+            print(f'for {ob.ObId} found= {is_found}, loc = {valid_pos} ')
+        
+        print("test")
+
         return targetLocations
 
     def generateTargetLocationInRads(self):

@@ -25,6 +25,7 @@ class NearestNeighbour:
         sequence of verticles with their pos
         """
         permutations = list(itertools.permutations(self.targetLocations))
+        print(len(self.targetLocations))
         costList = []
         lowestDistance = 999999
         for perm in permutations:
@@ -34,12 +35,16 @@ class NearestNeighbour:
             if distance <= lowestDistance:
                 lowestDistance = distance
                 stmPath, path = self.findPath(list(perm))
-                cost = self.calculateCost(stmPath)
 
-                costList.append((stmPath, path, cost))
+                if stmPath is not None:
+                    cost = self.calculateCost(stmPath)
+                    costList.append((stmPath, path, cost))
             else:
                 continue
         optimalPath = min(costList, key=lambda tup: tup[2])
+        print(f'optimal path is {optimalPath}')
+        len_of = len(optimalPath)
+        print(f'length of optimal path {len_of}')
         #print("Stm path", optimalPath[0])
         #print("coords", optimalPath[1])
         #dist = self.totalDistance(optimalPath[0])
@@ -250,10 +255,12 @@ class NearestNeighbour:
             counter += 1
             """
             """
-        if counter != len(targetLocations):
-            print("Path is incomplete!!!")
-            # path = []
-            # stmPath = []
+        # if len(stmPath) != len(targetLocations):
+        #     print("Path is incomplete!!!")
+        #     # path = []
+        #     # stmPath = []
+        #     return None, None
+        # else:
         return stmPath, path
 
     def calculateCost(self, path: list[tuple]):
